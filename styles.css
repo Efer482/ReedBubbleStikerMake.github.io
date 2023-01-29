@@ -1,0 +1,153 @@
+body {
+    background-color: #262626;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* Menu */
+
+#principalContent {
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+
+    background-color: #262626;
+}
+
+#LayoutMenu {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 10vw;
+    left: 0px;
+    top: 0px;
+    /* BackGround/primary/color
+
+Primary color to background page
+*/
+    background: #171616;
+    border-radius: 0px 40px 40px 0px;
+}
+
+/* IconMenu*/
+#IconMenu {
+    margin-top: 2rem;
+    width: 5rem;
+    height: 5rem;
+}
+
+.displayTrue {
+    display: block;
+    opacity: 0;
+}
+
+.displayFalse {
+    display: none;
+    opacity: 0;
+}
+
+section {
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    width: 100%;
+
+}
+
+#buttonsContent {
+    margin-top: 3%;
+    justify-content: space-around;
+    background-color: #262626;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    width: 100%;
+
+}
+
+/* Button/Seleccionar */
+.primaryButton {
+
+
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 10px;
+
+    width: 15rem;
+    height: 5rem;
+
+    background: #FFD18C;
+    border-radius: 20px;
+    /* Seleccionar */
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 39px;
+    /* identical to box height */
+
+
+    color: #000000;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.MenuOptions {
+    margin-top: 50%;
+    /* Layout 4B */
+    font-style: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    /* identical to box height */
+
+
+    color: #FFFFFF;
+
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.MenuOptions  a{
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #FFD18C;
+}
+
+.MenuOptions  a:visited {
+    color: #FFD18C;
+}
+
+.MenuOptions  a:hover {
+    color: #FFBF60;
+}
+
+.MenuOptions  a:active {
+    color: #FF9900;
+}
+.oculto{
+    display: none;
+}
+canvas{
+    background: #cdcdcd;
+}

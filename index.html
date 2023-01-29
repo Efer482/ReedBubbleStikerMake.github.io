@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReedBubble StikerPack Generator</title>
+  <meta autor="eferson_c_o">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="principalContent">
+    <div id="LayoutMenu">
+      <svg id="IconMenu" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M39.8438 9.375H13.2812C11.1239 9.375 9.375 11.1239 9.375 13.2812V39.8438C9.375 42.0011 11.1239 43.75 13.2812 43.75H39.8438C42.0011 43.75 43.75 42.0011 43.75 39.8438V13.2812C43.75 11.1239 42.0011 9.375 39.8438 9.375Z"
+          stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M86.7188 9.375H60.1562C57.9989 9.375 56.25 11.1239 56.25 13.2812V39.8438C56.25 42.0011 57.9989 43.75 60.1562 43.75H86.7188C88.8761 43.75 90.625 42.0011 90.625 39.8438V13.2812C90.625 11.1239 88.8761 9.375 86.7188 9.375Z"
+          stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M39.8438 56.25H13.2812C11.1239 56.25 9.375 57.9989 9.375 60.1562V86.7188C9.375 88.8761 11.1239 90.625 13.2812 90.625H39.8438C42.0011 90.625 43.75 88.8761 43.75 86.7188V60.1562C43.75 57.9989 42.0011 56.25 39.8438 56.25Z"
+          stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+        <path
+          d="M86.7188 56.25H60.1562C57.9989 56.25 56.25 57.9989 56.25 60.1562V86.7188C56.25 88.8761 57.9989 90.625 60.1562 90.625H86.7188C88.8761 90.625 90.625 88.8761 90.625 86.7188V60.1562C90.625 57.9989 88.8761 56.25 86.7188 56.25Z"
+          stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <h3 class="MenuOptions"><a class="menu-link"  data-canvas="previewImage1"> Layout 4M</a></h3>
+      <h3 class="MenuOptions"><a class="menu-link"  data-canvas="previewImage2"> Layout 3SM1B</a></h3>
+    </div>
+    <section>
+      
+      <canvas id="previewImage1"></canvas>
+      <canvas class="displayFalse" id="finaleImage1"></canvas>
+
+      <canvas class="displayFalse" id="previewImage2"></canvas>
+      <canvas class="displayFalse" id="finaleImage2"></canvas>
+      <div id="buttonsContent">
+        <button class="primaryButton" id="select-folder-button">Seleccionar carpeta</button>
+        <button class="primaryButton displayFalse" id="remake-image-button">Rehacer imagen</button>
+        <button class="primaryButton displayFalse" id="dowloand-image-button">Descargar imagen</button>
+      </div>
+    </section>
+  </div>
+<script src="script.js"></script>
+</body>
+
+</html>
