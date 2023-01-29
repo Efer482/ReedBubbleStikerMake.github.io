@@ -6,6 +6,10 @@ var finaleCanvas = document.getElementById("finaleImage1");
 var canvas = document.getElementById("previewImage1");
 var finaleCtx = finaleCanvas.getContext("2d");
 var ctx = canvas.getContext("2d");
+finaleCanvas.height = 4848;
+finaleCanvas.width = 4848;
+canvas.height = 600;
+canvas.width = 600;
 const sizeCanvaWidth = 600;
 const sizeCanvaHeight = 600;
 for (let i = 0; i < menuLinks.length; i++) {
@@ -21,7 +25,7 @@ function loadImagesCanva(canvasId, images) {
   switch (canvasId) {
     case 'previewImage1':
       finaleCtx.clearRect(0, 0, canvas.width, canvas.width);
-      ctx.clearRect(0, 0, canvas.width, canvas.width);
+      ctx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.width);
       var img1 = new Image();
       img1.src = images[0];
       img1.onload = function () {
@@ -51,7 +55,7 @@ function loadImagesCanva(canvasId, images) {
       }
       break;
     case 'previewImage2':
-      finaleCtx.clearRect(0, 0, canvas.width, canvas.width);
+      finaleCtx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.width);
       ctx.clearRect(0, 0, canvas.width, canvas.width);
       var img1 = new Image();
       img1.src = images[0];
@@ -80,8 +84,8 @@ function loadImagesCanva(canvasId, images) {
   }
 }
 function loadCanvas(canvasId) {
-  this.finaleCanvas = document.getElementById(canvasId);
-  this.canvas = document.getElementById(canvasId);
+  this.finaleCanvas = document.getElementById('finaleImage' + canvasId);
+  this.canvas = document.getElementById('previewImage' + canvasId);
 
   this.finaleCtx = finaleCanvas.getContext("2d");
   this.ctx = canvas.getContext("2d");
@@ -98,8 +102,10 @@ function loadCanvas(canvasId) {
     }
   });
   var imagesPreview = ['/Img/img1.png', '/Img/img2.png' , '/Img/img3.png', '/Img/img4.png']
+  canvasId = 'previewImage' + canvasId;
   switch (canvasId) {
     case 'previewImage1':
+      console.log(canvasId)
       this.canvas.classList.remove('displayFalse')
       loadImagesCanva('previewImage1', imagesPreview);
       break;
@@ -155,22 +161,24 @@ input.addEventListener("change", function () {
             // Crear botón para Rehacer la imagen
             changeImageButton.innerHTML = "Rehacer imagen";
             changeImageButton.onclick = function () {
-              finaleCtx.clearRect(0, 0, canvas.width, sizeCanvaHeight);
-              ctx.clearRect(0, 0, canvas.width, sizeCanvaHeight);
+              finaleCtx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.width);
+              ctx.clearRect(0, 0, canvas.width, canvas.width);
 
               selectRandomImages(selectedCanva);
             }
             // Crear botón para descargar imagen
             downloadButton.innerHTML = "Descargar imagen";
             downloadButton.onclick = function () {
-              finaleCanvas.classList.remove('displayFalse')
-              finaleCanvas.classList.add('displayTrue')
+
               var link = document.createElement("a");
               link.href = finaleCanvas.toDataURL();
               link.download = "miImagen.png";
               link.click();
-              finaleCanvas.classList.remove('displayTrue')
-              finaleCanvas.classList.add('displayFalse')
+              // finaleCanvas.classList.remove('displayTrue')
+              // finaleCanvas.classList.add('displayFalse')
+              // canvas.classList.remove('displayFalse')
+              // canvas.classList.add('displayTrue')
+              // canvas.classList.remove('ocultar')
             }
           }, 600);
         }
