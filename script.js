@@ -91,6 +91,8 @@ let loadedImages = 0;
 function loadImages(imgWithData, myCanvas) {
   return new Promise((resolve, reject) => {
     this.ctx = myCanvas.getContext("2d");
+    this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
+
     function loadNextImage(i) {
       document.getElementById("contentLoader").classList.remove("oculto");
       document.body.style.overflow = "hidden";
@@ -105,8 +107,9 @@ function loadImages(imgWithData, myCanvas) {
         i++;
         var imgData = ctx.getImageData(img.positionX, img.positionY, img.width, img.height);
         Promise.all([isImageTouchingBounds(img, myCanvas, imgData)]).then(function (results) {
+          console.log(ctx)
           if (results[0]) {
-            ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
+            this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
             i = 0;
             // Reducir tamaño de la imagen y volver a calcular posición
             img.width = parseInt(img.width * 0.8);
@@ -120,7 +123,7 @@ function loadImages(imgWithData, myCanvas) {
               img.height = parseInt(img.height * 0.8);
               img.positionX = parseInt(((myCanvas.width - myCanvas.width / 1.1) / 2) + imgWithData['img1'].width / 2)
               img.positionY = parseInt((myCanvas.height - myCanvas.width) / 2);
-              ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
+              this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
               i = 0;
 
             }
@@ -262,12 +265,21 @@ input.addEventListener("change", function () {
             // Crear botón para Rehacer la imagen
             changeImageButton.innerHTML = "Rehacer imagen";
             changeImageButton.onclick = function () {
-              finaleCtx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.width);
-              ctx.clearRect(0, 0, canvas.width, canvas.width);
+              function clearFinaleCanvas() {
+                return new Promise(resolve => {
+                  finaleCtx.clearRect(0, 0, finaleCanvas.width, finaleCanvas.width);
+                  resolve();
+                });
+              }
+              
+              clearFinaleCanvas().then(function() {
+                // ctx.clearRect(0, 0, canvas.width, canvas.width); 
+                console.log('oe')
+                document.body.style.overflow = "scroll";
+                document.getElementById("contentLoader").classList.add("oculto");
+                selectRandomImages(selectedCanva);
+              });
 
-              document.body.style.overflow = "scroll";
-              document.getElementById("contentLoader").classList.add("oculto");
-              selectRandomImages(selectedCanva);
             }
             // Crear botón para descargar imagen
             downloadButton.innerHTML = "Descargar imagen";
