@@ -8,9 +8,25 @@
   <title>ReedBubble StikerPack Generator</title>
   <meta autor="eferson_c_o">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="load.css">
 </head>
 
 <body>
+  <div id="contentLoader" class="oculto">
+    <div class='loader'>
+    <h1>Adaptando stikers</h1>
+    </div>
+  </div>
+  <div id="contentLoaderDowload" class="oculto">
+    <div class='loader'>
+    <h1>Descargando stikers</h1>
+    </div>
+  </div>
+  <div id="contentLoaderImages" class="oculto">
+    <div class='loader'>
+    <h1>Subiendo imagenes</h1>
+    </div>
+  </div>
   <div id="principalContent">
     <div id="LayoutMenu">
       <svg id="IconMenu" width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,12 +47,8 @@
       <h3 class="MenuOptions"><a class="menu-link"  data-canvas="2"> Layout 3SM1B</a></h3>
     </div>
     <section>
-      
-      <canvas id="previewImage1"></canvas>
-      <canvas class="displayFalse" id="finaleImage1"></canvas>
-
-      <canvas class="displayFalse" id="previewImage2"></canvas>
-      <canvas class="displayFalse" id="finaleImage2"></canvas>
+      <div id="contentCanva">
+      </div>
       <div id="buttonsContent">
         <button class="primaryButton" id="select-folder-button">Seleccionar carpeta</button>
         <button class="primaryButton displayFalse" id="remake-image-button">Rehacer imagen</button>

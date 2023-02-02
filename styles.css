@@ -148,3 +148,6 @@ section {
 .oculto{
     display: none;
 }
+canvas{
+    background-color: #000000;
+}
