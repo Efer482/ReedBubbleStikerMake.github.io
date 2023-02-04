@@ -22,54 +22,62 @@ class DictionaryImages {
         this.#allImages = value;
     }
     s1_4_Id1() {
-        this.allImages['img1'] = {
-            'height': (this.canvas.height / 2) ,
-            'width': (this.canvas.width / 2) ,
-            'positionX': (0) ,
-            'positionY': (0) ,
-            'imgUrl': this.images[0],
-            'typeImg': 's1_4_Id1',
-            'id' : 'img1'
-        };
-        return this.allImages['img1'];
+        return new Promise((resolve, reject) => {
+            this.allImages['img1'] = {
+                'height': (this.canvas.height / 2) ,
+                'width': (this.canvas.width / 2) ,
+                'positionX': (0) ,
+                'positionY': (0) ,
+                'imgUrl': this.images[0],
+                'typeImg': 's1_4_Id1',
+                'id' : 'img1'
+            };
+            resolve(this.allImages['img1'])
+        })
     }
     s1_4_Id2() {
-        this.allImages['img2'] = {
-            'positionX': (this.canvas.width / 2) ,
-            'height': (this.canvas.height / 2) ,
-            'width': (this.canvas.width / 2) ,
-            'positionY': (0) ,
-            'imgUrl': this.images[1],
-            'typeImg': 's1_4_Id2',
-            'id' : 'img2'
-        };
-        return this.allImages['img2'];
+        return new Promise((resolve, reject) => {
+            this.allImages['img2'] = {
+                'positionX': (this.canvas.width / 2) ,
+                'height': (this.canvas.height / 2) ,
+                'width': (this.canvas.width / 2) ,
+                'positionY': (0) ,
+                'imgUrl': this.images[1],
+                'typeImg': 's1_4_Id2',
+                'id' : 'img2'
+            };
+            resolve(this.allImages['img2'] )
+        })
     }
     s1_4_Id3() {
-        this.allImages['img3'] =
-        {
-            'positionY': (this.canvas.height / 2) ,
-            'height': (this.canvas.height / 2) ,
-            'width': (this.canvas.width / 2) ,
-            'positionX': (0) ,
-            'imgUrl': this.images[2],
-            'typeImg': 's1_4_Id3',
-            'id' : 'img3'
-        };
-        return this.allImages['img3'];
+        return new Promise((resolve, reject) => {
+            this.allImages['img3'] =
+            {
+                'positionY': (this.canvas.height / 2) ,
+                'height': (this.canvas.height / 2) ,
+                'width': (this.canvas.width / 2) ,
+                'positionX': (0) ,
+                'imgUrl': this.images[2],
+                'typeImg': 's1_4_Id3',
+                'id' : 'img3'
+            };
+            resolve(this.allImages['img3'])
+        })
     }
     s1_4_Id4() {
-        this.allImages['img4'] =
-        {
-            'positionY': (this.canvas.height / 2) ,
-            'positionX': (this.canvas.width / 2) ,
-            'height': (this.canvas.height / 2) ,
-            'width': (this.canvas.width / 2) ,
-            'typeImg': 's1_4_Id4',
-            'imgUrl': this.images[3],
-            'id' : 'img4'
-        };
-        return this.allImages['img4'];
+        return new Promise((resolve, reject) => {
+            this.allImages['img4'] =
+            {
+                'positionY': (this.canvas.height / 2) ,
+                'positionX': (this.canvas.width / 2) ,
+                'height': (this.canvas.height / 2) ,
+                'width': (this.canvas.width / 2) ,
+                'typeImg': 's1_4_Id4',
+                'imgUrl': this.images[3],
+                'id' : 'img4'
+            };
+            resolve(this.allImages['img4']);
+        })
     }
     s1_4_All() {
         this.allImages = [];
