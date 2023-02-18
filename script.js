@@ -50,30 +50,31 @@ function loadImagesCanva(canvasId, images, reload = false) {
       /**View Canvas */
       this.dictionaryImages.canvas = this.canvas;
       imgWithDataView = this.dictionaryImages.s1_4_All();
+      console.log(53, imgWithDataView)
       break;
     case 'previewImage2':
       /** Finale Canvas*/
       this.dictionaryImages.canvas = finaleCanvas;
       // imgWithDataFinale = this.dictionaryImages.s1_3_All();
-      this.dictionaryImages.s1_3_Id1().then((res) =>{
+      this.dictionaryImages.s1_3_Id1().then((res) => {
         imgWithDataFinale['img1'] = res;
       });
-      this.dictionaryImages.s1_3_Id2().then((res) =>{
+      this.dictionaryImages.s1_3_Id2().then((res) => {
         imgWithDataFinale['img2'] = res;
       });
-      this.dictionaryImages.m1_3_Id3().then((res)=>{
+      this.dictionaryImages.m1_3_Id3().then((res) => {
         imgWithDataFinale['img3'] = res;
       });
       // imgWithDataFinale = this.dictionaryImages.m1_3_Id3();
       /**View Canvas */
       this.dictionaryImages.canvas = this.canvas;
-      this.dictionaryImages.s1_3_Id1().then((res)=>{
+      this.dictionaryImages.s1_3_Id1().then((res) => {
         imgWithDataView['img1'] = res;
       });
-      this.dictionaryImages.s1_3_Id2().then((res)=>{
+      this.dictionaryImages.s1_3_Id2().then((res) => {
         imgWithDataView['img2'] = res;
       });
-      this.dictionaryImages.m1_3_Id3().then((res)=>{
+      this.dictionaryImages.m1_3_Id3().then((res) => {
         imgWithDataView['img3'] = res;
       });
       // imgWithDataView['img3'] = this.dictionaryImages.m1_3_Id3();
@@ -115,51 +116,45 @@ function loadImages(imgWithData, myCanvas) {
         i++;
         var imgData = ctx.getImageData(img.positionX, img.positionY, img.width, img.height);
 
+        function resizeImage() {
+          return new Promise((resolve, reject) => {
+            this.dictionaryImages.resizeImage(0.8, img['id']).then(() => {
+                this.dictionaryImages[img['typeImg']]().then((res) => {
+                Object.assign(img, res);
+                this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
+                loadImageCanva(img.imgUrl, img.width, img.height, this.ctx, img.positionX, img.positionY, function () {
+                  isImageTouchingBounds(img, myCanvas, imgData).then(function (results) {
+                    if (results) {
+                      console.log(results)
+                      imgWithData[img['id']] = img;
+                      // resizeImage().then(() => {
+                      //   console.log("Lloraaa")
+                        resolve()
+                      // })
+                    } else {
+                      console.log("Se acabo")
+                      resolve()
+                    }
+                  })
+                });
+              })
+            })
+          })
+        }
         Promise.all([isImageTouchingBounds(img, myCanvas, imgData)]).then(function (results) {
           if (results[0]) {
             console.log(results)
-            // this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
-            // i = 0;
-            // // Reducir tamaño de la imagen y volver a calcular posición
-            // img.width = parseInt(img.width * 0.8);
-            // img.height = parseInt(img.height * 0.8);
-            // // Calcular nueva posición
-            // img.positionX = parseInt(((myCanvas.width - myCanvas.width / 1.1) / 2) + imgWithData['img1'].width / 2)
-            // img.positionY = parseInt((myCanvas.height - myCanvas.width) / 2);
 
-            
-            let e = true;
-            // isImageTouchingBounds(img, myCanvas, imgData).then(function (re) {
-            //   if (re[0]) {
-            //     this.dictionaryImages[img['typeImg']]().then((imgResponse) => {
-            //       Object.assign(img, imgResponse)
-                  this.dictionaryImages.resizeImage(0.8, img['id']).then(()=>{
-                    console.log(img['typeImg'])
-                    var tempImg = this.dictionaryImages[img['typeImg']]().then((res) => {
-                      Object.assign(img, tempImg);
-                      setTimeout(() => {
-                        
-                      }, 0);
-                      this.ctx.clearRect(0, 0, myCanvas.width, myCanvas.width);
-                      i = 0;
-                    })
-                  })
-            //       // img.positionX = 0
-            //       // img.positionY = 150
-            //     })
-            //   } else {
-            //     e = false
-            //   }
+                // resizeImage().then(() => {
+                  console.log(151)
+                  // i = 0
+                  loadNextImage(i++);
 
-
-            // })
-
-            // img.positionX = 0
-            // img.positionY = 150
-            // Repetir proceso hasta que la imagen ya no toque los bordes
+                // })
+          } else {
+            console.log("oeeeeeeeeeeee")
+            loadNextImage(i++);
           }
-          console.log("oeeeeeeeeeeee")
-          loadNextImage(i++);
         });
       });
     }
@@ -181,9 +176,9 @@ function isImageTouchingBounds(img, myCanvas, imgData, paintData = false) {
       if (x === 0 || x === myCanvas.width - 1 || y === 0 || y === myCanvas.height - 1) {
         if (imgPixels[i + 3] !== 0) {
           if (paintData) {
-          for (let x1 = x - 5; x1 <= x + 5; x1++) {
-            for (let y1 = y - 5; y1 <= y + 5; y1++) {
-              const i2 = ((y + Math.floor((y1 / 4) / imgData.width)) * imgData.width + (x1 + (y1 / 4) % imgData.width)) * 4;
+            for (let x1 = x - 5; x1 <= x + 5; x1++) {
+              for (let y1 = y - 5; y1 <= y + 5; y1++) {
+                const i2 = ((y + Math.floor((y1 / 4) / imgData.width)) * imgData.width + (x1 + (y1 / 4) % imgData.width)) * 4;
                 paintToColorInCanva(myCtx, '#90FF33', [x1, y1], 1)
               }
 
